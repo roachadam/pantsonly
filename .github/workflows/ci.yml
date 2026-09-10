@@ -21,7 +21,7 @@ jobs:
       - run: npm run package
       - name: Verify generated CSS is committed
         run: git diff --exit-code -- hide-shorts.css
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pantsonly-packages
           path: |
