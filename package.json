@@ -21,10 +21,11 @@
     "lint:addon": "web-ext lint --source-dir build/firefox",
     "test": "node --test test/*.test.mjs",
     "test:live": "node test/live-youtube.mjs",
-    "check": "npm run build && node --check background.js && node --check rules.js && node --check content.js && node --check scripts/build.mjs && node --check test/live-youtube.mjs && npm test && node test/validate.mjs && npm run lint:addon",
+    "check": "npm run build && node --check background.js && node --check rules.js && node --check content.js && node --check scripts/build.mjs && node --check scripts/capture-store-screenshots.mjs && node --check test/live-youtube.mjs && npm test && node test/validate.mjs && npm run lint:addon",
     "package:firefox": "web-ext build --source-dir build/firefox --artifacts-dir dist/firefox --overwrite-dest --filename pantsonly-firefox.zip",
     "package:chrome": "web-ext build --source-dir build/chrome --artifacts-dir dist/chrome --overwrite-dest --filename pantsonly-chrome.zip",
     "package": "npm run check && npm run package:firefox && npm run package:chrome",
+    "screenshots:store": "npm run build && node scripts/capture-store-screenshots.mjs",
     "smoke:firefox": "npm run build && web-ext run --source-dir build/firefox --target firefox-desktop --start-url 'https://www.youtube.com/results?search_query=iphone+duo'",
     "smoke:chrome": "npm run build && web-ext run --source-dir build/chrome --target chromium --start-url 'https://www.youtube.com/results?search_query=iphone+duo'"
   },

@@ -50,9 +50,10 @@ Source code and issue reporting are available from the project homepage.
 ## Required listing artwork
 
 The extension icons are ready under `assets/icons`. The 1400×560 marquee and
-440×280 promotional graphics are ready under `assets/store`. Before first
-submission, capture honest browser screenshots showing Home, Search, and the
-sidebar with the extension active. Do not use mocked screenshots.
+440×280 promotional graphics are ready under `assets/store`. Reproducible,
+full-bleed 1280×800 browser screenshots are stored under
+`assets/store/screenshots`. Regenerate them with `npm run screenshots:store`.
+They show live YouTube pages rather than mocked UI.
 
 ## Trademark notice
 
