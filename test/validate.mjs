@@ -27,8 +27,8 @@ assert.equal(packageJson.repository.url, "git+https://github.com/roachadam/pants
 assert.deepEqual(manifest.content_scripts[0].js, ["rules.js", "content.js"]);
 assert.deepEqual(manifest.permissions, ["webNavigation"]);
 assert.deepEqual(manifest.host_permissions, ["https://*.youtube.com/*"]);
-assert.equal(manifest.browser_specific_settings.gecko.strict_min_version, "140.0");
-assert.equal(manifest.browser_specific_settings.gecko_android.strict_min_version, "142.0");
+assert.equal(manifest.browser_specific_settings.gecko.strict_min_version, "142.0");
+assert.equal(manifest.browser_specific_settings.gecko_android, undefined);
 assert.match(manifest.browser_specific_settings.gecko.id, /^\{[0-9a-f-]{36}\}$/i);
 assert.deepEqual(Object.keys(manifest.icons), ["16", "32", "48", "96", "128"]);
 assert.match(background, /hostEquals: "youtube\.com"/);
