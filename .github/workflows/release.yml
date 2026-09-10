@@ -1,0 +1,46 @@
+name: Sign Firefox release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    environment: addons.mozilla.org
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run package
+      - name: Create reviewer source archive
+        run: git archive --format=zip --output=dist/pantsonly-source.zip HEAD
+      - name: Submit and sign through Mozilla Add-ons
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: >-
+          npx web-ext sign
+          --source-dir build/firefox
+          --artifacts-dir dist/signed
+          --channel listed
+          --amo-metadata store/amo-metadata.json
+          --upload-source-code dist/pantsonly-source.zip
+          --api-key "$AMO_JWT_ISSUER"
+          --api-secret "$AMO_JWT_SECRET"
+          --ignore-files node_modules test scripts dist package.json package-lock.json .github .gitignore .DS_Store
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pantsonly-signed
+          path: |
+            dist/signed/*
+            dist/chrome/pantsonly-chrome.zip
+            dist/pantsonly-source.zip

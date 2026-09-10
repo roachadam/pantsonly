@@ -1,0 +1,42 @@
+/* Generated from rules.js by scripts/generate-css.mjs. Do not edit. */
+
+html.no-youtube-shorts-block-page body {
+  visibility: hidden !important;
+}
+
+:is(ytd-reel-shelf-renderer,ytd-reel-item-renderer,ytm-reel-shelf-renderer,ytm-reel-item-renderer,ytm-shorts-lockup-view-model,ytm-shorts-lockup-view-model-v2,ytd-rich-shelf-renderer[is-shorts],[href^="/shorts"],[href*="youtube.com/shorts/"]) {
+  display: none !important;
+}
+
+:is(ytd-reel-shelf-renderer,ytm-reel-shelf-renderer,ytd-rich-shelf-renderer[is-shorts]):has(:is([href^="/shorts"],[href*="youtube.com/shorts/"],[overlay-style="SHORTS"],[data-style="SHORTS"],.shortsLockupViewModelHost,.pivot-shorts,ytm-shorts-lockup-view-model,ytm-shorts-lockup-view-model-v2,[is-shorts],[is-reel])) {
+  display: none !important;
+}
+
+:is(ytd-rich-shelf-renderer,grid-shelf-view-model,ytm-rich-section-renderer):has(:is([href^="/shorts"],[href*="youtube.com/shorts/"],[overlay-style="SHORTS"],[data-style="SHORTS"],.shortsLockupViewModelHost,.pivot-shorts,ytm-shorts-lockup-view-model,ytm-shorts-lockup-view-model-v2,[is-shorts],[is-reel])):not(:has([href^="/watch"])) {
+  display: none !important;
+}
+
+:is(ytd-reel-item-renderer,ytm-reel-item-renderer,ytm-shorts-lockup-view-model,ytm-shorts-lockup-view-model-v2,.ytGridShelfViewModelGridShelfItem,ytd-rich-item-renderer,ytd-video-renderer,ytd-grid-video-renderer,ytd-compact-video-renderer,ytd-channel-video-player-renderer,ytm-video-with-context-renderer,ytd-guide-entry-renderer,ytd-mini-guide-entry-renderer,ytd-guide-collapsible-entry-renderer,yt-guide-entry-renderer,yt-list-item-view-model,yt-tab-shape,tp-yt-paper-tab,ytm-pivot-bar-item-renderer,yt-chip-cloud-chip-renderer,ytm-chip-cloud-chip-renderer):has(:is([href^="/shorts"],[href*="youtube.com/shorts/"],[overlay-style="SHORTS"],[data-style="SHORTS"],.shortsLockupViewModelHost,.pivot-shorts,ytm-shorts-lockup-view-model,ytm-shorts-lockup-view-model-v2,[is-shorts],[is-reel])) {
+  display: none !important;
+}
+
+:is(ytd-guide-entry-renderer,ytd-mini-guide-entry-renderer,ytd-guide-collapsible-entry-renderer,yt-guide-entry-renderer,yt-list-item-view-model,yt-tab-shape,tp-yt-paper-tab,ytm-pivot-bar-item-renderer,yt-chip-cloud-chip-renderer,ytm-chip-cloud-chip-renderer):has(:is([title="Shorts"],[aria-label="Shorts"],[title="Short"],[aria-label="Short"],[title="ショート"],[aria-label="ショート"],[title="ショート動画"],[aria-label="ショート動画"],[title="쇼츠"],[aria-label="쇼츠"],[title="短片"],[aria-label="短片"],[title="短视频"],[aria-label="短视频"],[title="短影片"],[aria-label="短影片"],[title="Короткие видео"],[aria-label="Короткие видео"],[title="Короткі відео"],[aria-label="Короткі відео"],[title="Қысқа бейнелер"],[aria-label="Қысқа бейнелер"],[title="वीडियो शॉर्ट्स"],[aria-label="वीडियो शॉर्ट्स"],[title="YouTube शॉर्ट्स"],[aria-label="YouTube शॉर्ट्स"],[title="فيديوهات Shorts"],[aria-label="فيديوهات Shorts"],[title="ویدیوهای کوتاه"],[aria-label="ویدیوهای کوتاه"],[title="סרטונים קצרים"],[aria-label="סרטונים קצרים"])) {
+  display: none !important;
+}
+
+[data-no-youtube-shorts-hidden] {
+  display: none !important;
+}
+
+#no-youtube-shorts-notice {
+  position: fixed;
+  z-index: 2147483647;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #fff;
+  background: #272727;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 35%);
+  font: 13px/1.35 system-ui, sans-serif;
+}

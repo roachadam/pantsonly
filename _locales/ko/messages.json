@@ -1,0 +1,5 @@
+{
+  "extensionName": { "message": "PantsOnly - Block YouTube Shorts" },
+  "extensionDescription": { "message": "YouTube Shorts 섹션, 카드, 탐색 링크 및 Shorts 페이지를 제거합니다." },
+  "shortsBlocked": { "message": "Shorts가 차단되었습니다" }
+}

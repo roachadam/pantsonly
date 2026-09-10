@@ -1,0 +1,29 @@
+name: Extension checks
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run package
+      - name: Verify generated CSS is committed
+        run: git diff --exit-code -- hide-shorts.css
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pantsonly-packages
+          path: |
+            dist/firefox/pantsonly-firefox.zip
+            dist/chrome/pantsonly-chrome.zip

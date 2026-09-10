@@ -1,0 +1,5 @@
+{
+  "extensionName": { "message": "PantsOnly - Block YouTube Shorts" },
+  "extensionDescription": { "message": "Supprime les sections, cartes, liens de navigation et pages directes des Shorts YouTube." },
+  "shortsBlocked": { "message": "Shorts bloqués" }
+}

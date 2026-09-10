@@ -1,0 +1,5 @@
+{
+  "extensionName": { "message": "PantsOnly - Block YouTube Shorts" },
+  "extensionDescription": { "message": "YouTube のショート棚、カード、ナビゲーションリンク、ショートページを非表示にします。" },
+  "shortsBlocked": { "message": "ショートをブロックしました" }
+}

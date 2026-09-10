@@ -1,0 +1,5 @@
+{
+  "extensionName": { "message": "PantsOnly - Block YouTube Shorts" },
+  "extensionDescription": { "message": "移除 YouTube Shorts 專區、卡片、導覽連結和 Shorts 頁面。" },
+  "shortsBlocked": { "message": "已封鎖 Shorts" }
+}

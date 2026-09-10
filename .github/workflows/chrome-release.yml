@@ -1,0 +1,47 @@
+name: Publish Chrome release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: chrome-web-store
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run package
+      - name: Upload and submit to Chrome Web Store
+        env:
+          CWS_CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CWS_CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          CWS_REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+          CWS_PUBLISHER_ID: ${{ secrets.CWS_PUBLISHER_ID }}
+          CWS_EXTENSION_ID: ${{ secrets.CWS_EXTENSION_ID }}
+        run: |
+          token_response="$(curl --fail --silent --show-error \
+            https://oauth2.googleapis.com/token \
+            --data-urlencode "client_id=${CWS_CLIENT_ID}" \
+            --data-urlencode "client_secret=${CWS_CLIENT_SECRET}" \
+            --data-urlencode "refresh_token=${CWS_REFRESH_TOKEN}" \
+            --data-urlencode "grant_type=refresh_token")"
+          access_token="$(jq -er '.access_token' <<<"${token_response}")"
+          item="publishers/${CWS_PUBLISHER_ID}/items/${CWS_EXTENSION_ID}"
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer ${access_token}" \
+            -X POST \
+            -T dist/chrome/pantsonly-chrome.zip \
+            "https://chromewebstore.googleapis.com/upload/v2/${item}:upload"
+          curl --fail --silent --show-error \
+            -H "Authorization: Bearer ${access_token}" \
+            -H "Content-Type: application/json" \
+            -X POST \
+            -d '{"publishType":"STAGED_PUBLISH","blockOnWarnings":true}' \
+            "https://chromewebstore.googleapis.com/v2/${item}:publish"

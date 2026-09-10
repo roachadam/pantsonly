@@ -1,0 +1,5 @@
+{
+  "extensionName": { "message": "PantsOnly - Block YouTube Shorts" },
+  "extensionDescription": { "message": "YouTube Shorts की शेल्फ़, कार्ड, नेविगेशन लिंक और सीधे Shorts पेज हटाता है।" },
+  "shortsBlocked": { "message": "Shorts ब्लॉक किए गए" }
+}

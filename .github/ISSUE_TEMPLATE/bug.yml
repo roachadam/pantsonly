@@ -1,0 +1,43 @@
+name: YouTube layout regression
+description: Report visible Shorts or ordinary content hidden by mistake.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Firefox
+        - Zen
+        - Chrome
+        - Edge or another Chromium browser
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+    validations:
+      required: true
+  - type: input
+    id: locale
+    attributes:
+      label: YouTube language or locale
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include the page type, reproduction steps, and a screenshot if safe.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed account identifiers, cookies, and private recommendations.
+          required: true
